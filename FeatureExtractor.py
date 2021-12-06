@@ -26,7 +26,7 @@ def extract_features():
         wav_file = filename.split('\\')[len(filename.split('\\'))-1].split('_')[0] + "_" + filename.split('\\')[len(filename.split('\\'))-1].split('_')[1] + ".wav"
 
         ##if the Feature set file exists, load it and skip reprocessing
-        features_file = "..\\saved_objects\\" + wav_file + ".features"
+        features_file = ".\\saved_objects\\" + wav_file + ".features"
         if not os.path.exists(features_file):
 
             ##if the file hasn't already been normalized do this
