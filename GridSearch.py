@@ -3,7 +3,7 @@ import numpy as np
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import GridSearchCV
 from sklearn.neighbors import KNeighborsClassifier as knn
-
+import pickle
 
 
 def grid_search (x,y, param_grid):
@@ -19,3 +19,4 @@ def grid_search (x,y, param_grid):
     
     print("Best parameter (CV score=%0.3f):" % search.best_score_)
     print(search.best_params_)
+    pickle.dump(search.best_estimator_, '.\\saved_objects\\best_model.pkl', compress = 1)

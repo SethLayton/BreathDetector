@@ -26,27 +26,22 @@ Y_train_n = np.array(Y_train_n)
 Y_test_n = np.array(Y_test_n)
 
 
-####Used for hyper-parameter tuning
-
-# neighbors = [5, 6, 8]
-# param_grid = {
-#     "knn__n_neighbors": neighbors
-# }
-# grid_search(X_train_n, Y_train_n, param_grid=param_grid)
-
-
-filename_sav = ".\\saved_objects\\finalized_model.sav"
+filename_sav = ".\\saved_objects\\best_model.pkl"
 ##read model from file if stored
 if not os.path.exists(filename_sav):
     ##Build the model
-    pipe = Pipeline([('scaler', MinMaxScaler()), ('knn', knn(n_neighbors=5, weights='distance'))])
-    ##Fit the model
-    model_n = pipe.fit(X_train_n, Y_train_n)
-    ##Write the model out to storage
+    ####Used for hyper-parameter tuning
 
-    pickle.dump(model_n, open(filename_sav, 'wb'))
-else:
-    model_n= pickle.load(open(filename_sav, 'rb'))
+    neighbors = [3,5,7,9,11]
+    weights = ['uniform', 'Distance']
+    param_grid = {
+        "knn__n_neighbors": neighbors,
+        "knn_weights": weights
+    }
+    grid_search(X_train_n, Y_train_n, param_grid=param_grid)
+
+##Load the model (either it already existed, or gridsearch finished)
+model_n= pickle.load(open(filename_sav, 'rb'))
 
 
 ##Get a training score
