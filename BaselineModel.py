@@ -8,14 +8,16 @@ from sklearn.neighbors import KNeighborsClassifier as knn
 import sklearn
 from sklearn.metrics import f1_score
 import pickle
-from FeatureExtractor import extract_features
+from FeatureExtractor import extract_features_baseline
 from GridSearch import grid_search
 from Plot import pca
 from sklearn.decomposition import PCA
 import matplotlib.pyplot as plt
 
+window_length = 0.025
+window_hop = 0.01
 ##Extract features from the audio files based on the manual annotations
-all_feats_x, all_feats_y = extract_features()
+all_feats_x, all_feats_y = extract_features_baseline(window_length, window_hop)
 
 
 ##Train/Test split       
