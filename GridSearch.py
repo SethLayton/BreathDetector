@@ -1,5 +1,4 @@
 from sklearn.pipeline import Pipeline
-import numpy as np
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import GridSearchCV
 from sklearn.neighbors import KNeighborsClassifier as knn

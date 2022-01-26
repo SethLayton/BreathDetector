@@ -27,8 +27,10 @@ def extract_features():
 
         ##if the Feature set file exists, load it and skip reprocessing
         features_file = ".\\saved_objects\\" + wav_file + ".features"
-        if not os.path.exists(features_file):
-
+        if os.path.exists(features_file):            
+            ##Load the feature set from file
+            DCRlistmatrix_normalized = pickle.load(open(features_file, 'rb'))
+        else:
             ##if the file hasn't already been normalized do this
             output_file = wav_file.split(".wav")[0] + "_Normalized.wav"
             if not os.path.exists(output_file):
@@ -93,8 +95,6 @@ def extract_features():
                 short_time_energy = math.log(tsum)
                 temp_mf = DCRmfcc_matrix[step_count]      
                 
-                
-
                 seg_start = curr_loc
                 seg_end = curr_loc + winlength
 
@@ -117,12 +117,8 @@ def extract_features():
                 if curr_loc + winlength > len(sig):
                     break
 
-            ##Dump the feature set out to a file to save time on this step in the future            
+            ##Dump the feature set out to a file to save time on this step in the future          
             pickle.dump(DCRlistmatrix_normalized, open(features_file, 'wb'))
-            
-        else:
-            ##Load the feature set from file
-            DCRlistmatrix_normalized = pickle.load(open(features_file, 'rb'))
 
         ##Create the overall feature set list
         all_feats.append(DCRlistmatrix_normalized)

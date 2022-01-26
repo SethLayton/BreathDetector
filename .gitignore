@@ -127,3 +127,13 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+Scripts/easy_install-3.8.exe
+Scripts/f2py.exe
+Scripts/fonttools.exe
+Scripts/pip.exe
+Scripts/pip3.8.exe
+Scripts/pip3.exe
+Scripts/pyftmerge.exe
+Scripts/pyftsubset.exe
+Scripts/ttx.exe
+bfltest.py
