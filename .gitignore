@@ -137,3 +137,7 @@ Scripts/pyftmerge.exe
 Scripts/pyftsubset.exe
 Scripts/ttx.exe
 bfltest.py
+.ionide
+.vscode
+Scripts
+share
